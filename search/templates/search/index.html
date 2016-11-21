@@ -1,0 +1,10 @@
+{% if all_books %}
+    <h3>Here is a full list of Books</h3>
+    <ul>
+        {% for book in all_books %}
+        <li><a href="/search/{{ book.id }}/"> {{ book.title }}</a> </li>
+        {%  endfor %}
+    </ul>
+{% else %}
+    <h3>You Search produced no results</h3>
+{% endif %}
