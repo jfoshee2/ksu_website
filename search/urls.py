@@ -7,6 +7,6 @@ urlpatterns = [
     #/search/
     url(r'^$', views.index, name='index'),
 
-    # /Search/hunger-games/
+    # /Search/:id/
     url(r'^(?P<book_id>[0-9]+)/$', views.detail, name='detail'),
 ]
