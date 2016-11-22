@@ -2,23 +2,25 @@ from django.db import models
 
 
 class Book(models.Model):
-    #cover = models.
+    cover = models.CharField(max_length=10000, null=True)
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     publisher = models.CharField(max_length=100)
     isbn = models.CharField(max_length=100)
     description = models.CharField(max_length=999999)
-    new_book = models.IntegerField()
-    used_book = models.IntegerField()
-    rental_book = models.IntegerField()
-    ebook = models.IntegerField()
-    new_book_price = models.IntegerField()
-    used_book_price = models.IntegerField()
-    rental_book_price = models.IntegerField()
-    ebook_price = models.IntegerField()
+    new_book = models.FloatField()
+    used_book = models.FloatField()
+    rental_book = models.FloatField()
+    ebook = models.FloatField()
+    new_book_price = models.FloatField()
+    used_book_price = models.FloatField()
+    rental_book_price = models.FloatField()
+    ebook_price = models.FloatField()
+    in_cart = models.BooleanField(default=False)
 
     def __str__(self):
             return self.title + ' - ' + self.author
+
 
 class Course(models.Model):
     #inside of the ForeignKey function it should be (book, on_delete=models.CASCADE)
