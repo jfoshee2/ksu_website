@@ -1,1 +1,54 @@
-<h1>{{ book }}</h1>
+<img src="{{ book.cover }}">
+
+<h1>{{ book.title }}</h1>
+<h2>{{ book.author }}</h2>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'search:add_to_cart' book.id %}" method="post">
+    {% csrf_token %}
+    {% for book in book.book_set.all %}
+        <input type="button" id="book{{ forloop.counter }}" name="book" value="{{ book.id }}" />
+        <label for="book{{ forloop.counter }}">
+            {{ book.title }}
+            {% if book.in_cart %}
+                <img src="http://img.waveprice.com/user/2015/09/15/118/StR1gkEKBl.100.jpg" />
+            {% endif %}
+        </label><br>
+    {% endfor %}
+    <input type="submit" value="Add">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

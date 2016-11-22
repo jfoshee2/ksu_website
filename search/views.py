@@ -1,6 +1,5 @@
-from django.http import Http404
-from django.shortcuts import render
-from .models import Book
+from django.shortcuts import render, get_object_or_404
+from .models import Book, Course
 
 
 def index(request):
@@ -10,8 +9,21 @@ def index(request):
 
 
 def detail(request, book_id):
-    try:
-        book = Book.objects.get(pk=book_id)
-    except Book.DoesNotExist:
-        raise Http404("Book does not exist")
+    # book = Book.objects.get(pk = book_id)
+    book = get_object_or_404(Book, id=book_id)
     return render(request, 'search/detail.html', {'book': book})
+
+def add_to_cart(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    try:
+        selected_book = book.book_set.get(pk=request.POST['book'])
+    except(KeyError, Book.DoesNotExist):
+        return render(request, 'search/detail.html', {
+            'book': book,
+            'error_message': "You did not select a valid book"
+        })
+    else:
+        selected_book.in_cart = True
+        selected_book.save()
+        return render(request, 'search/detail.html', {'book': book})
+
