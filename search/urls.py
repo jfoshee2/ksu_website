@@ -15,7 +15,10 @@ urlpatterns = [
     url(r'^(?P<book_id>[0-9]+)/$', views.detail, name='detail'),
 
     # /Search/<Album id>/add_to_cart    ~this is what detail will be referencing
-    url(r'^(?P<book_id>[0-9]+)/add_to_cart/$', views.detail, name='add_to_cart'),
+    url(r'^(?P<book_id>[0-9]+)/add_to_cart/$', views.add_to_cart, name='add_to_cart'),
+
+    # /search/cart ~shows the contents of the cart
+    url(r'^cart/$', views.cart_detail, name='cart_detail'),
 ]
 
 

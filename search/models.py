@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Book(models.Model):
+    id = models.IntegerField(primary_key=True)
     cover = models.CharField(max_length=10000, null=True)
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
@@ -23,7 +24,7 @@ class Book(models.Model):
 
 
 class Course(models.Model):
-    #inside of the ForeignKey function it should be (book, on_delete=models.CASCADE)
+    # inside of the ForeignKey function it should be (book, on_delete=models.CASCADE)
     book = models.ForeignKey(Book)
     course_number = models.CharField(max_length=100)
     course_name = models.CharField(max_length=100)
