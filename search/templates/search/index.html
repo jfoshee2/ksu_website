@@ -1,3 +1,25 @@
+{%  load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'search/style.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!this is the logo>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'search:index' %}">Home</a>
+            <a class="navbar-brand" href="{% url 'search:index' %}">search</a>
+            <a class="navbar-brand" href="{% url 'search:index' %}">About Us</a>
+            <a class="navbar-brand" href="{% url 'search:index' %}">Log In</a>
+
+        </div>
+    </div>
+</nav>
+
 {% if all_books %}
     <h3>Here is a full list of Books</h3>
     <ul>

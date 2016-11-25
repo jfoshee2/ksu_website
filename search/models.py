@@ -2,17 +2,16 @@ from django.db import models
 
 
 class Book(models.Model):
-    id = models.IntegerField(primary_key=True)
     cover = models.CharField(max_length=10000, null=True)
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     publisher = models.CharField(max_length=100)
     isbn = models.CharField(max_length=100)
     description = models.CharField(max_length=999999)
-    new_book = models.FloatField()
-    used_book = models.FloatField()
-    rental_book = models.FloatField()
-    ebook = models.FloatField()
+    new_book_quantity = models.FloatField()
+    used_book_quantity = models.FloatField()
+    rental_book_quantity = models.FloatField()
+    ebook_quantity = models.FloatField()
     new_book_price = models.FloatField()
     used_book_price = models.FloatField()
     rental_book_price = models.FloatField()

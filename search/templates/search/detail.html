@@ -9,8 +9,8 @@
 
 <form action="{% url 'search:add_to_cart' book.id %}" method="post">
     {% csrf_token %}
-    {% for book in book.book_set.all %}
-        <input type="button" id="book{{ forloop.counter }}" name="book" value="{{ book.id }}" />
+    {% for book in book.course_set.all %}
+        <input type="radio" id="book{{ forloop.counter }}" name="book" value="{{ book.id }}" />
         <label for="book{{ forloop.counter }}">
             {{ book.title }}
             {% if book.in_cart %}
